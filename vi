@@ -1,0 +1,27 @@
+// AUTO LIVE IOTX
+async function getIOTX() {
+  try {
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=iotex&vs_currencies=usd,idr&include_24hr_change=true');
+    const data = await res.json();
+    const priceUsd = data.iotex.usd;
+    const priceIdr = data.iotex.idr;
+    const change = data.iotex.usd_24h_change;
+    
+    document.getElementById('price').innerHTML = `\$${priceUsd} / Rp ${priceIdr.toLocaleString()}`;
+    
+    // animasi naik turun
+    const changeEl = document.getElementById('change');
+    if(change > 0) {
+      changeEl.innerHTML = `↗️ +${change.toFixed(2)}%`;
+      changeEl.className = 'text-green-400 animate-bounce';
+    } else {
+      changeEl.innerHTML = `↘️ ${change.toFixed(2)}%`;
+      changeEl.className = 'text-red-400 animate-bounce';
+    }
+    document.getElementById('lastUpdate').innerText = new Date().toLocaleTimeString('id-ID') + ' WIB';
+  } catch(e){ console.log('gagal ambil harga') }
+}
+
+// JALANIN OTOMATIS TIAP 10 DETIK
+getIOTX(); // jalanin sekali pas buka
+setInterval(getIOTX, 10000); // abis itu tiap 10 detik update terus

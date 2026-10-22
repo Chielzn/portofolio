@@ -41,6 +41,20 @@
     <p>Portfolio Website - Live di GitHub Pages</p>
     <p style="color:#00ffcc; margin-top:10px;">Project 2: Coming Soon - Dibikin Senior 12 Tahun</p>
   </div>
+    <div class="card">
+    <h2>👋 Sapa Gua!</h2>
+    <button onclick="sapa()" style="background:#00ffcc; color:#000; border:none; padding:10px 20px; border-radius:20px; font-weight:bold; cursor:pointer;">Klik Gua!</button>
+    <p id="hasil-sapa" style="margin-top:15px;"></p>
+  </div>
+
+  <script>
+    function sapa() {
+      const nama = prompt("Siapa nama lu?");
+      if(nama){
+        document.getElementById("hasil-sapa").innerHTML = "Woy " + nama + "! Salam dari Banten Pride! 🔥";
+      }
+    }
+  </script>
   <footer>© 2026 Chielzn • chielzn.github.io/portofolio</footer>
 </body>
 </html>

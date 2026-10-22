@@ -1,27 +1,34 @@
-// AUTO LIVE IOTX
-async function getIOTX() {
-  try {
-    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=iotex&vs_currencies=usd,idr&include_24hr_change=true');
-    const data = await res.json();
-    const priceUsd = data.iotex.usd;
-    const priceIdr = data.iotex.idr;
-    const change = data.iotex.usd_24h_change;
-    
-    document.getElementById('price').innerHTML = `\$${priceUsd} / Rp ${priceIdr.toLocaleString()}`;
-    
-    // animasi naik turun
-    const changeEl = document.getElementById('change');
-    if(change > 0) {
-      changeEl.innerHTML = `↗️ +${change.toFixed(2)}%`;
-      changeEl.className = 'text-green-400 animate-bounce';
-    } else {
-      changeEl.innerHTML = `↘️ ${change.toFixed(2)}%`;
-      changeEl.className = 'text-red-400 animate-bounce';
-    }
-    document.getElementById('lastUpdate').innerText = new Date().toLocaleTimeString('id-ID') + ' WIB';
-  } catch(e){ console.log('gagal ambil harga') }
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IOTX LIVE AUTO</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white text-center p-6">
+<h1 class="text-3xl font-bold mt-10">IOTX LIVE AUTO 🔥</h1>
+<p class="text-gray-400">Ngikutin Pasar Tiap 10 Detik</p>
+<div class="mt-8 p-6 bg-gray-900 rounded-xl max-w-sm mx-auto">
+<p id="price" class="text-2xl font-bold">Loading...</p>
+<p id="change" class="mt-2 font-bold">--</p>
+<p id="lastUpdate" class="text-xs text-gray-500 mt-4">--</p>
+</div>
+<script>
+async function getIOTX(){
+  try{
+    let r = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=iotex&vs_currencies=usd,idr&include_24hr_change=true');
+    let d = await r.json();
+    document.getElementById('price').innerHTML = '$'+d.iotex.usd+' / Rp '+d.iotex.idr.toLocaleString('id-ID');
+    let c = d.iotex.usd_24h_change;
+    let el = document.getElementById('change');
+    if(c>0){ el.innerHTML='↗️ +'+c.toFixed(2)+'%'; el.className='mt-2 font-bold text-green-400 animate-pulse'; }
+    else{ el.innerHTML='↘️ '+c.toFixed(2)+'%'; el.className='mt-2 font-bold text-red-400 animate-pulse'; }
+    document.getElementById('lastUpdate').innerText='Update: '+new Date().toLocaleTimeString('id-ID')+' WIB';
+  }catch(e){ document.getElementById('price').innerText='Gagal load'; }
 }
-
-// JALANIN OTOMATIS TIAP 10 DETIK
-getIOTX(); // jalanin sekali pas buka
-setInterval(getIOTX, 10000); // abis itu tiap 10 detik update terus
+getIOTX();
+setInterval(getIOTX,10000);
+</script>
+</body>
+</html>

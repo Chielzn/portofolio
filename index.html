@@ -2,99 +2,107 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chielzn pandeglang</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CHIELZN PANDEGLANG</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:#000;color:white;min-height:100vh;text-align:center;padding-bottom:90px}
+h1{margin-top:38px;font-size:27px;font-weight:900;letter-spacing:0.5px}
+.sub{color:#6b7280;font-size:13px;margin:8px 0 22px}
+.tabs{display:flex;justify-content:center;gap:8px;margin-bottom:26px}
+.tabs button{padding:9px 18px;border-radius:22px;border:1px solid #27272a;background:#18181b;color:#71717a;cursor:pointer;font-size:13px;font-weight:700;transition:0.2s}
+.tabs button.active{background:#3b82f6;color:white;border-color:#3b82f6;box-shadow:0 0 18px #3b82f660}
+.card{max-width:385px;margin:0 auto;border-radius:24px;padding:24px}
+.card-dark{background:#121212;border:1px solid #232323}
+.card-sultan{background:linear-gradient(135deg,#1e3a8a 0%,#312e81 50%,#4c1d95 100%);border:none;box-shadow:0 15px 40px #312e8160}
+.price{font-size:22px;font-weight:900;margin:14px 0;letter-spacing:0.3px}
+#v2,#v3,#v4{display:none}
+.avatar{width:72px;height:72px;background:#3b82f6;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;margin:0 auto 14px;box-shadow:0 0 24px #3b82f670}
+.tags{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:16px}
+.tags span{padding:7px 14px;border-radius:20px;font-size:13px;font-weight:800}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.stats div{background:#1e1e1e;border:1px solid #2a2a2a;border-radius:14px;padding:14px}
+.btn-green{background:#22c55e;color:white;padding:13px;border-radius:14px;width:100%;border:none;font-weight:800;font-size:14px}
+.btn-blue{background:#38bdf8;color:#0c4a6e;padding:13px;border-radius:22px;width:100%;border:none;font-weight:700;margin-top:12px}
+.btn-gray{background:#1f2937;color:#9ca3af;padding:11px;border-radius:22px;width:100%;border:1px solid #2a2a2a;margin-top:10px}
+.cta{background:white;color:black;padding:14px;border-radius:25px;width:100%;border:none;font-weight:900;font-size:16px;margin-top:18px}
+.footer{position:fixed;bottom:0;left:0;right:0;background:#000000f0;backdrop-filter:blur(12px);border-top:1px solid #1f1f1f;padding:12px;display:flex;gap:10px;justify-content:center}
+.btn-wa{background:#22c55e;color:white;padding:13px 32px;border-radius:25px;border:none;font-weight:800;flex:1;max-width:320px}
+.btn-git{background:#18181b;color:white;padding:13px 22px;border-radius:25px;border:1px solid #27272a}
+</style>
 </head>
-<body class="bg-black text-white min-h-screen p-4 pb-24">
-<div class="max-w-lg mx-auto">
-<h1 class="text-3xl font-bold text-center mt-6">CHIELZN PANDEGLANG 🔥</h1>
-<p class="text-center text-gray-400 text-sm">1 Link - 3 Versi</p>
-<div class="flex gap-2 justify-center mt-6">
-<button onclick="pindah('v1')" id="b-v1" class="px-5 py-2 bg-blue-600 rounded-full font-bold text-sm">v1 AUTO</button>
-<button onclick="pindah('v2')" id="b-v2" class="px-5 py-2 bg-gray-800 rounded-full text-sm">v2 SAPA</button>
-<button onclick="pindah('v3')" id="b-v3" class="px-5 py-2 bg-gray-800 rounded-full text-sm">v3 JUAL</button>
+<body>
+<h1>CHIELZN PANDEGLANG 🔥</h1>
+<div class="sub">1 Link - 4 Versi</div>
+<div class="tabs">
+<button class="active" onclick="showTab('v1')" id="b1">v1 AUTO</button>
+<button onclick="showTab('v2')" id="b2">v2 SAPA</button>
+<button onclick="showTab('v3')" id="b3">v3 JUAL</button>
+<button onclick="showTab('v4')" id="b4">v4 PORTO</button>
 </div>
-<div id="v1" class="mt-6 p-6 bg-gradient-to-br from-blue-900 to-purple-900 rounded-2xl text-center border border-blue-700">
-<h2 class="text-2xl font-bold">v1 AUTO SULTAN ✨</h2>
-<p id="price" class="text-2xl font-bold mt-4">Loading bitcoin...</p>
-<p id="change" class="mt-2">--</p>
-<p id="jam" class="text-xs text-blue-200 mt-3">Live tiap 1 detik</p>
+
+<div id="v1" class="card card-sultan">
+<div style="font-weight:900;font-size:17px;letter-spacing:0.5px">v1 AUTO SULTAN ✨</div>
+<div class="price" id="price">$81549 / Rp 1.476.511.786</div>
+<div style="color:#fca5a5;font-weight:700;font-size:14px">⬇️ -0.04%</div>
+<div style="font-size:12px;color:#c4b5fd;margin-top:8px" id="time">Change: 0.04% • 08.29.56 WIB</div>
 </div>
-<div id="v2" class="hidden mt-6 p-6 bg-gray-900 rounded-2xl border border-gray-800">
-<h2 class="text-2xl font-bold text-center">Woy NAMALU SIAPA! 👋</h2>
-<p class="text-center text-gray-400 text-xs mt-1">Tanya yang bener, gua jawab bener!</p>
-<div id="chatBox" class="mt-4 h-48 overflow-y-auto bg-black rounded-xl p-3 text-left space-y-2 text-sm">
-<div class="bg-gray-800 p-2 rounded-lg w-fit">Halo! Gua Chielzn Pandeglang! Tanya dong! 👇</div>
+
+<div id="v2" class="card card-dark">
+<h3 style="font-size:20px">Halo, Gue Achiel 👋</h3>
+<p style="margin-top:12px;color:#a1a1aa;font-size:14px;line-height:1.5">Web designer dari Pandeglang yang ngulik Bitcoin & bikin web sultan.</p>
 </div>
-<div class="mt-3 flex gap-2">
-<input id="inputSapa" type="text" placeholder="Ketik woy / lu siapa / iotx..." class="flex-1 px-4 py-2 bg-gray-800 rounded-full text-sm outline-none">
-<button onclick="balasSapa()" class="px-5 py-2 bg-blue-600 rounded-full font-bold text-sm">Kirim</button>
+
+<div id="v3" class="card card-dark">
+<h3 style="font-size:18px">sosmed chielzn 💰</h3>
+<p style="margin-top:6px;color:#a1a1aa;font-size:14px">bitcoin to the moon! 🚀</p>
+<button class="btn-green" onclick="window.open('https://indodax.com','_blank')">Lihat Harga Resmi di Indodax</button>
+<div style="font-size:11px;color:#52525b;margin-top:8px">Bukan ajakan beli, DYOR ya!</div>
+<button class="btn-blue" onclick="window.open('https://facebook.com','_blank')">📹 Video FB CHIELZN</button>
+<button class="btn-gray" onclick="window.open('https://indodax.com','_blank')">Lihat di Indodax</button>
 </div>
-<div class="mt-3 flex gap-2 flex-wrap justify-center">
-<button onclick="quickSapa('woy')" class="px-3 py-1 bg-gray-800 rounded-full text-xs">Woy</button>
-<button onclick="quickSapa('lu siapa')" class="px-3 py-1 bg-gray-800 rounded-full text-xs">Lu siapa?</button>
-<button onclick="quickSapa('chielzn')" class="px-3 py-1 bg-gray-800 rounded-full text-xs">chielzm</button>
-<button onclick="quickSapa('bitcoin')" class="px-3 py-1 bg-gray-800 rounded-full text-xs">bitcoin</button>
+
+<div id="v4" class="card card-dark">
+<div class="avatar">C</div>
+<h2 style="font-weight:900">CHIELZN</h2>
+<p style="color:#71717a;font-size:14px">bitcoin • Web Designer</p>
+<div style="background:#22c55e18;color:#4ade80;border:1px solid #22c55e40;padding:4px 12px;border-radius:20px;font-size:11px;display:inline-block;margin:12px 0;font-weight:700">● AVAILABLE</div>
+<p style="font-size:14px;color:#a1a1aa;line-height:1.5">Gue bikin web yang ngasilin duit. Fokus landing page high-convert & API real-time.</p>
+<div class="stats">
+<div><b style="font-size:22px">3+</b><br><small style="color:#71717a">PROJECT</small></div>
+<div><b style="font-size:22px">100%</b><br><small style="color:#71717a">SATISFIED</small></div>
 </div>
+<div class="tags">
+<span style="background:#3b82f6;color:white">HTML/CSS</span>
+<span style="background:#facc15;color:black">JavaScript</span>
+<span style="background:#fb923c;color:white">API</span>
+<span style="background:#a78bfa;color:white">UI/UX</span>
 </div>
-<div id="v3" class="hidden mt-6 p-6 bg-gray-900 rounded-2xl text-center border border-gray-800">
-<h2 class="text-2xl font-bold">sosmed chielzn 💰</h2>
-<p class="mt-2">bitcoin to the moon! 🚀</p>
-<div class="mt-4 p-3 bg-green-600 rounded-xl font-bold text-sm">Lihat Harga Resmi di Indodax</div>
-<p class="text-[10px] text-gray-500 mt-2">Bukan ajakan beli, DYOR ya!</p>
-<div class="mt-4 space-y-2">
-<a href="https://www.facebook.com/share/1FbRRV2pyX/" target="_blank" class="block py-3 bg-blue-600 rounded-full font-bold text-sm">▶️ Video FB CHIELZN</a>
-<a href="https://indodax.com/market/bitcoinIDR" target="_blank" class="block py-2 bg-gray-800 rounded-full font-bold text-sm border border-gray-700">Lihat di Indodax</a>
+<button class="cta" onclick="window.open('https://wa.me/6285282567021','_blank')">Chat Buat Project</button>
 </div>
+
+<div class="footer">
+<button class="btn-wa" onclick="window.open('https://wa.me/6285282567021','_blank')">💬 CHAT WA</button>
+<button class="btn-git" onclick="window.open('https://github.com/chielzn','_blank')">GITHUB</button>
 </div>
-</div>
-<div class="fixed bottom-0 left-0 right-0 p-4 bg-black/90 border-t border-gray-800">
-<div class="max-w-lg mx-auto flex gap-2">
-<a href="https://wa.me/6285282567021?text=Halo%20Chielzn!" class="flex-1 py-3 bg-green-500 rounded-full font-bold text-center">💬 CHAT WA</a>
-<a href="https://github.com/Chielzn" class="px-6 py-3 bg-gray-800 rounded-full font-bold text-center">GITHUB</a>
-</div>
-</div>
+
 <script>
-function pindah(v){
-  ['v1','v2','v3'].forEach(x=>{
-    document.getElementById(x).classList.add('hidden');
-    document.getElementById('b-'+x).className='px-5 py-2 bg-gray-800 rounded-full text-sm';
-  });
-  document.getElementById(v).classList.remove('hidden');
-  document.getElementById('b-'+v).className='px-5 py-2 bg-blue-600 rounded-full font-bold text-sm';
+function showTab(t){
+['v1','v2','v3','v4'].forEach(x=>document.getElementById(x).style.display='none');
+document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+document.getElementById(t).style.display='block';
+document.getElementById('b'+t.slice(1)).classList.add('active');
 }
-function quickSapa(t){ document.getElementById('inputSapa').value=t; balasSapa(); }
-function balasSapa(){
-  let inp = document.getElementById('inputSapa');
-  let box = document.getElementById('chatBox');
-  let teks = inp.value.trim(); if(!teks) return;
-  box.innerHTML += `<div class="bg-blue-600 p-2 rounded-lg w-fit ml-auto">${teks}</div>`;
-  let t = teks.toLowerCase(); let balas="";
-  if(t.includes('woy')) balas="Woyy bosku! Apa kabar Pandeglang? 😎";
-  else if(t.includes('lu siapa') || t.includes('kamu siapa') || t.includes('siapa lu')) balas="Gua Chielzn dari Banten! 🔥";
-  else if(t.includes('halo')||t.includes('hai')||t.includes('hello')) balas="Halo juga sultan! Sehat-sehat ya!";
-  else if(t=='p' || t=='ping') balas="P! Ada apa bos?";
-  else if(t.includes('sultan')) balas="retail bitcoin hadir! Kita hold sampai Rp20m! 🚀";
-  else if(t.includes('bitcon')) balas="bitcoin sekarang "+document.getElementById('price').innerText+" - Gimana menurut lu?";
-  else if(t.length <= 3) balas="Wkwk ngakak lu! Ketik yang jelas dong bos 😂";
-  else balas="Siap bos! Gua dengerin nih: '"+teks+"' - Keren! 👍";
-  setTimeout(()=>{ box.innerHTML+=`<div class="bg-gray-800 p-2 rounded-lg w-fit">${balas}</div>`; box.scrollTop=box.scrollHeight; },500);
-  inp.value=""; box.scrollTop=box.scrollHeight;
+async function getBTC(){
+try{
+let r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,idr&include_24hr_change=true');
+let d=await r.json();
+document.getElementById('price').innerText='$'+d.bitcoin.usd+' / Rp '+d.bitcoin.idr.toLocaleString('id-ID');
+document.getElementById('time').innerText='Change: '+d.bitcoin.usd_24h_change.toFixed(2)+'% • '+new Date().toLocaleTimeString('id-ID')+' WIB';
+}catch(e){}
 }
-async function live(){
-  try{
-    let r = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,idr&include_24hr_change=true');
-    let d = await r.json();
-    document.getElementById('price').innerText='$'+d.bitcoin.usd+' / Rp '+d.bitcoin.idr.toLocaleString('id-ID');
-    let c=d.bitcoin.usd_24h_change;
-    document.getElementById('change').innerText=(c>0?'↗️ +':'↘️ ')+c.toFixed(2)+'%';
-    document.getElementById('change').className=c>0?'mt-2 font-bold text-green-400':'mt-2 font-bold text-red-400';
-    document.getElementById('jam').innerText='Update: '+new Date().toLocaleTimeString('id-ID')+' WIB';
-  }catch(e){}
-}
-live(); setInterval(live,10000);
-document.getElementById('inputSapa').addEventListener('keypress', function(e){ if(e.key==='Enter') balasSapa(); });
+getBTC();
+setInterval(getBTC,10000);
 </script>
 </body>
 </html>
